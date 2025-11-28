@@ -248,6 +248,10 @@ def render_progress_table(current_user):
     - **Only you** can see what you type; others only see green cells for correct answers
     - Your progress is **automatically saved**
     - Turn all the cells green in your row to win!
+
+    ### Tools:
+    - For the PySpark exercises use https://www.sparkplayground.com/pyspark-online-compiler
+    - For W3 Schools exercises use https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_all
     
     ### Gift Card:
     The **first person to complete all challenges** (turn all cells green) will be awarded the £20 Amazon Gift Card! 
