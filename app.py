@@ -12,7 +12,7 @@ DATA_FILE = "progress_data.json"
 # Define correct answers for each column (1-indexed)
 # You can modify these to set what the correct input is for each column
 CORRECT_ANSWERS = {
-    1: "answer1",
+    1: "404b",
     2: "answer2",
     3: "answer3",
     4: "answer4",
