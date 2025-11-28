@@ -111,11 +111,6 @@ def main():
     with tab2:
         render_leaderboard()
     
-    # Admin section (optional - for setting correct answers)
-    with st.sidebar.expander("Admin: View Correct Answers"):
-        st.markdown("**Correct answers by column:**")
-        for col_num, answer in CORRECT_ANSWERS.items():
-            st.text(f"Col {col_num}: {answer}")
 
 def render_progress_table(current_user):
     """Render the progress table."""
