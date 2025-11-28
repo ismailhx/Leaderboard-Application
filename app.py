@@ -110,7 +110,6 @@ def main():
     # TAB 2: Leaderboard
     with tab2:
         render_leaderboard()
-    
 
 def render_progress_table(current_user):
     """Render the progress table."""
@@ -166,13 +165,25 @@ def render_progress_table(current_user):
                     # Check if answer is correct before rendering
                     is_correct_now = is_correct_answer(col_num, current_value) if current_value else False
                     
-                    # Apply custom CSS for green background with black text when correct
+                    # Apply custom CSS for green background with black text when correct, red when incorrect
                     if is_correct_now:
                         st.markdown(
                             f"""
                             <style>
                             input[aria-label="col_{col_num}"] {{
                                 background-color: #90EE90 !important;
+                                color: #000000 !important;
+                            }}
+                            </style>
+                            """,
+                            unsafe_allow_html=True
+                        )
+                    elif current_value:  # Has input but incorrect
+                        st.markdown(
+                            f"""
+                            <style>
+                            input[aria-label="col_{col_num}"] {{
+                                background-color: #FFB6B6 !important;
                                 color: #000000 !important;
                             }}
                             </style>
@@ -243,10 +254,6 @@ def render_progress_table(current_user):
     - **Only you** can see what you type; others only see green cells for correct answers
     - Your progress is **automatically saved**
     - Turn all the cells green in your row to win!
-
-    ### Tools:
-    - For the PySpark exercises use https://www.sparkplayground.com/pyspark-online-compiler
-    - For W3 Schools exercises use https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_all
     
     ### Gift Card:
     The **first person to complete all challenges** (turn all cells green) will be awarded the £20 Amazon Gift Card! 
