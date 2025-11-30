@@ -13,7 +13,7 @@ DATA_FILE = "progress_data.json"
 # You can modify these to set what the correct input is for each column
 CORRECT_ANSWERS = {
     1: "404b",
-    2: "lku48tgsrhogile4lu9gegnle95ty7e5yhh9l",
+    2: "114",
     3: "lku48tgsrhogile4lu9gegnle95ty7e5yhh9l",
     4: "lku48tgsrhogile4lu9gegnle95ty7e5yhh9l",
     5: "lku48tgsrhogile4lu9gegnle95ty7e5yhh9l",
