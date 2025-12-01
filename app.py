@@ -165,45 +165,27 @@ def render_progress_table(current_user):
                     # Check if answer is correct before rendering
                     is_correct_now = is_correct_answer(col_num, current_value) if current_value else False
                     
-                    # Apply custom CSS for green background with black text when correct, red when incorrect
                     if is_correct_now:
+                        # Show green box without text for correct answers
                         st.markdown(
-                            f"""
-                            <style>
-                            input[aria-label="col_{col_num}"] {{
-                                background-color: #90EE90 !important;
-                                color: #000000 !important;
-                            }}
-                            </style>
-                            """,
+                            f'<div style="background-color: #90EE90; padding: 5px; '
+                            f'border-radius: 3px; height: 38px; border: 1px solid #ddd;"></div>',
                             unsafe_allow_html=True
                         )
-                    elif current_value:  # Has input but incorrect
-                        st.markdown(
-                            f"""
-                            <style>
-                            input[aria-label="col_{col_num}"] {{
-                                background-color: #FFB6B6 !important;
-                                color: #000000 !important;
-                            }}
-                            </style>
-                            """,
-                            unsafe_allow_html=True
+                    else:
+                        # User can see and edit their own input
+                        new_value = st.text_input(
+                            f"col_{col_num}",
+                            value=current_value,
+                            key=key,
+                            label_visibility="collapsed"
                         )
-                    
-                    # User can see and edit their own input
-                    new_value = st.text_input(
-                        f"col_{col_num}",
-                        value=current_value,
-                        key=key,
-                        label_visibility="collapsed"
-                    )
-                    
-                    # Update data if value changed
-                    if new_value != current_value:
-                        st.session_state.data[name][str(col_num)] = new_value
-                        save_data(st.session_state.data)
-                        st.rerun()
+                        
+                        # Update data if value changed
+                        if new_value != current_value:
+                            st.session_state.data[name][str(col_num)] = new_value
+                            save_data(st.session_state.data)
+                            st.rerun()
                 else:
                     # Other users only see a green box if the answer is correct
                     if is_correct:
