@@ -187,16 +187,22 @@ def render_progress_table(current_user):
                         
                         # Update data if value changed
                         if new_value != current_value:
-                            st.session_state.data[name][str(col_num)] = new_value
+                            # Reload latest data first to avoid overwriting others' changes
+                            latest_data = load_data()
+                            
+                            # Merge: Update only this user's specific column
+                            if name not in latest_data:
+                                latest_data[name] = {}
+                            latest_data[name][str(col_num)] = new_value
                             
                             # Track attempt count
                             attempt_key = f"{col_num}_attempts"
-                            if attempt_key not in st.session_state.data[name]:
-                                st.session_state.data[name][attempt_key] = 0
-                            st.session_state.data[name][attempt_key] += 1
+                            if attempt_key not in latest_data[name]:
+                                latest_data[name][attempt_key] = 0
+                            latest_data[name][attempt_key] += 1
                             
                             # Check if user just completed all tasks
-                            user_data = st.session_state.data[name]
+                            user_data = latest_data[name]
                             correct_count = sum(
                                 1 for c in range(1, NUM_COLUMNS + 1)
                                 if is_correct_answer(c, user_data.get(str(c), ""))
@@ -204,7 +210,9 @@ def render_progress_table(current_user):
                             if correct_count == NUM_COLUMNS and "completion_time" not in user_data:
                                 user_data["completion_time"] = datetime.now().isoformat()
                             
-                            save_data(st.session_state.data)
+                            # Save merged data
+                            save_data(latest_data)
+                            st.session_state.data = latest_data
                             st.rerun()
                 else:
                     # Other users only see a green box if the answer is correct
