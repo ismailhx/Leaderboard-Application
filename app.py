@@ -2,6 +2,7 @@ import streamlit as st
 import json
 import os
 from pathlib import Path
+from datetime import datetime
 
 # Configuration
 NAMES = ["Esther", "Bobby", "Doug", "Benedict", "Lorik", "Benjamin", 
@@ -10,7 +11,6 @@ NUM_COLUMNS = 18
 DATA_FILE = "progress_data.json"
 
 # Define correct answers for each column (1-indexed)
-# You can modify these to set what the correct input is for each column
 CORRECT_ANSWERS = {
     1: "404b",
     2: "114",
@@ -58,14 +58,16 @@ def calculate_leaderboard(data):
             if is_correct_answer(col_num, user_data.get(str(col_num), ""))
         )
         is_complete = correct_count == NUM_COLUMNS
+        completion_time = user_data.get("completion_time", None)
         leaderboard.append({
             "name": name,
             "correct_count": correct_count,
-            "is_complete": is_complete
+            "is_complete": is_complete,
+            "completion_time": completion_time
         })
     
-    # Sort by correct count (descending), then by name (ascending)
-    leaderboard.sort(key=lambda x: (-x["correct_count"], x["name"]))
+    # Sort by correct count (descending), then by completion time, then by name
+    leaderboard.sort(key=lambda x: (-x["correct_count"], x["completion_time"] or "9999", x["name"]))
     
     # Assign positions
     position = 1
@@ -94,6 +96,8 @@ def main():
     
     # Load existing data
     if 'data' not in st.session_state:
+        st.session_state.data = load_data()
+    else:
         st.session_state.data = load_data()
     
     # Ensure user has an entry in the data
@@ -184,6 +188,22 @@ def render_progress_table(current_user):
                         # Update data if value changed
                         if new_value != current_value:
                             st.session_state.data[name][str(col_num)] = new_value
+                            
+                            # Track attempt count
+                            attempt_key = f"{col_num}_attempts"
+                            if attempt_key not in st.session_state.data[name]:
+                                st.session_state.data[name][attempt_key] = 0
+                            st.session_state.data[name][attempt_key] += 1
+                            
+                            # Check if user just completed all tasks
+                            user_data = st.session_state.data[name]
+                            correct_count = sum(
+                                1 for c in range(1, NUM_COLUMNS + 1)
+                                if is_correct_answer(c, user_data.get(str(c), ""))
+                            )
+                            if correct_count == NUM_COLUMNS and "completion_time" not in user_data:
+                                user_data["completion_time"] = datetime.now().isoformat()
+                            
                             save_data(st.session_state.data)
                             st.rerun()
                 else:
@@ -252,7 +272,7 @@ def render_leaderboard():
     leaderboard = calculate_leaderboard(st.session_state.data)
     
     # Display leaderboard
-    cols = st.columns([1, 3, 2, 2])
+    cols = st.columns([1, 2, 2, 2, 2])
     with cols[0]:
         st.markdown("**Rank**")
     with cols[1]:
@@ -261,11 +281,13 @@ def render_leaderboard():
         st.markdown("**Correct Answers**")
     with cols[3]:
         st.markdown("**Status**")
+    with cols[4]:
+        st.markdown("**Completed**")
     
     st.markdown("---")
     
     for entry in leaderboard:
-        cols = st.columns([1, 3, 2, 2])
+        cols = st.columns([1, 2, 2, 2, 2])
         
         # Medal for top 3
         medal = ""
@@ -296,6 +318,37 @@ def render_leaderboard():
                 st.markdown(f"✅ **{entry['position']}{position_suffix} Place!**")
             else:
                 st.markdown(f"**{entry['position']}{position_suffix} Place**")
+        with cols[4]:
+            if entry["completion_time"]:
+                completion_dt = datetime.fromisoformat(entry["completion_time"])
+                formatted_time = completion_dt.strftime("%b %d, %I:%M:%S %p")
+                st.markdown(f"**{formatted_time}**")
+            else:
+                st.markdown("-")
+    
+    # Hardest Worker section
+    st.markdown("---")
+    st.markdown("### 💪 Hardest Worker!")
+    
+    # Calculate total attempts for each person
+    attempt_counts = []
+    for name in NAMES:
+        user_data = st.session_state.data.get(name, {})
+        total_attempts = sum(
+            user_data.get(f"{col}_attempts", 0)
+            for col in range(1, NUM_COLUMNS + 1)
+        )
+        if total_attempts > 0:
+            attempt_counts.append({"name": name, "attempts": total_attempts})
+    
+    if attempt_counts:
+        # Sort by attempts (descending)
+        attempt_counts.sort(key=lambda x: -x["attempts"])
+        hardest_worker = attempt_counts[0]
+        
+        st.info(f"🔥 **{hardest_worker['name']}** is working the hardest with **{hardest_worker['attempts']} total attempts** across all challenges!")
+    else:
+        st.info("No attempts recorded yet. Start solving challenges!")
 
 if __name__ == "__main__":
     main()
