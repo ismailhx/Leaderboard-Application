@@ -29,7 +29,7 @@ CORRECT_ANSWERS = {
     15: "14s3",
     16: "WINDOW",
     17: "ssddtleps",
-    18: "sumsplit>sum",
+    18: "sumsplit>sumacyclic",
 }
 
 def load_data():
