@@ -36,10 +36,10 @@ CORRECT_ANSWERS = {
     14: "acdom",
     15: "14s3",
     16: "WINDOW",
-    17: "ssddtleps",
-    18: "sumsplit>sumacyclic",
-    19: "YISTRKW",
-    20: "BHBSPGC",
+    17: "YISTRKW",
+    18: "BHBSPGC",
+    19: "ssddtleps",
+    20: "sumsplit>sumacyclic",
 }
 
 def load_data():
