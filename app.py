@@ -263,10 +263,12 @@ def render_progress_table(current_user):
     ### Daily Exercises and Tests:
     - The **first 8 exercises** will be **PySpark exercises**
     - The **second set** of exercises are **8 SQL exercises** following the same format
-    - The **third** is a **Menti Test**, where the winner will be awarded with the penultimate portion of the code giving them an advantage over the other students
-    - Finally **2 exercises** will be released shortly after:
-      - One to solve the penultimate portion of the code (for those who did not win the Menti Test)
-      - A final PySpark exercise
+    ##### With 4 questions remaining:
+    - The **third** is a **Menti Test**, where the winner will be awarded with the the answer to one of the 4 remaining questions (of their choice) giving them an advantage over the other students
+    - The top of the leaderboard, for the Menti tests over the past number of weeks, will also have this privellege.
+    - 15 minutes later the final **4 exercises** will be released to the other students:
+      - 3 Conceptual Questions
+      - A Final PySpark exercise
     
     ### Progress Tracking:
     - **Select your name** from the sidebar to log in
