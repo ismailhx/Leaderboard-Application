@@ -5,9 +5,17 @@ from pathlib import Path
 from datetime import datetime
 
 # Configuration
-NAMES = ["Esther", "Bobby", "Doug", "Benedict", "Lorik", "Benjamin", 
-         "Emily", "Sebastien", "Hamsa", "Kate", "Harry", "Brian"]
-NUM_COLUMNS = 18
+NAMES = ["Tom", "Louis", "IndoorChris", "OutdoorChris", "Sophie", "Heather", "Zubair"]
+PLAYER_ICONS = {
+    "Tom": "🧙‍♂️",
+    "Louis": "🦊",
+    "IndoorChris": "🧛",
+    "OutdoorChris": "🏄",
+    "Sophie": "🦄",
+    "Heather": "🧜‍♀️",
+    "Zubair": "🐉",
+}
+NUM_COLUMNS = 20
 DATA_FILE = "progress_data.json"
 
 # Define correct answers for each column (1-indexed)
@@ -30,6 +38,8 @@ CORRECT_ANSWERS = {
     16: "WINDOW",
     17: "ssddtleps",
     18: "sumsplit>sumacyclic",
+    19: "YISTRKW",
+    20: "BHBSPGC",
 }
 
 def load_data():
@@ -150,7 +160,8 @@ def render_progress_table(current_user):
         cols = st.columns([2] + [1] * NUM_COLUMNS)
         
         with cols[0]:
-            st.markdown(f"**{name}**")
+            icon = PLAYER_ICONS.get(name, "")
+            st.markdown(f"{icon} **{name}**")
         
         for col_idx in range(NUM_COLUMNS):
             col_num = col_idx + 1
@@ -309,7 +320,8 @@ def render_leaderboard():
         with cols[0]:
             st.markdown(f"{medal} **{entry['position']}**")
         with cols[1]:
-            st.markdown(f"**{entry['name']}**")
+            icon = PLAYER_ICONS.get(entry['name'], "")
+            st.markdown(f"{icon} **{entry['name']}**")
         with cols[2]:
             position_suffix = "st" if entry["position"] == 1 else "nd" if entry["position"] == 2 else "rd" if entry["position"] == 3 else "th"
             progress_bar_html = f"""
