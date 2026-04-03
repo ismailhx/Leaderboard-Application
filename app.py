@@ -15,7 +15,7 @@ PLAYER_ICONS = {
     "Heather": "🧜‍♀️",
     "Zubair": "🐉",
 }
-NUM_COLUMNS = 20
+NUM_COLUMNS = 21
 DATA_FILE = "progress_data.json"
 
 # Define correct answers for each column (1-indexed)
@@ -24,7 +24,7 @@ CORRECT_ANSWERS = {
     2: "114",
     3: "17",
     4: "21aa",
-    5:"dX3k_QDnzHE"
+    5:"dX3k_QDnzHE",
     6: "t45",
     7: "ediw",
     8: "show()4",
