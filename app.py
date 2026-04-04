@@ -7,13 +7,13 @@ from datetime import datetime
 # Configuration
 NAMES = ["Tom", "Louis", "IndoorChris", "OutdoorChris", "Sophie", "Heather", "Zubair"]
 PLAYER_ICONS = {
-    "Tom": "🧙‍♂️",
-    "Louis": "🦊",
-    "IndoorChris": "🧛",
-    "OutdoorChris": "🏄",
-    "Sophie": "🦄",
-    "Heather": "🧜‍♀️",
-    "Zubair": "🐉",
+    "Tom": "🍣",
+    "Louis": "☕",
+    "IndoorChris": "👨‍💻",
+    "OutdoorChris": "🚴",
+    "Sophie": "💃",
+    "Heather": "🏃‍♀️",
+    "Zubair": "👨‍👦",
 }
 NUM_COLUMNS = 21
 DATA_FILE = "progress_data.json"
