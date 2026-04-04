@@ -262,12 +262,13 @@ def render_progress_table(current_user):
     - And so on...
     
     ### Daily Exercises and Tests:
-    - The **first 8 exercises** will be **PySpark exercises**
+    - The **first 9 exercises** will be **PySpark exercises + 1 Easter Egg Exercise**
     - The **second set** of exercises are **8 SQL exercises** following the same format
     ##### With 4 questions remaining:
-    - The **third** is a **Menti Test**, where the winner will be awarded with the the answer to one of the 4 remaining questions (of their choice) giving them an advantage over the other students
+    - The 4 questions will all be released at the same time at 3:30PM
+    - Before this there is a final **Menti Test**, where the winner will be awarded the answer to any one question (except the final exercise) of their choice, giving them an advantage over the other students.
     - The top of the leaderboard, for the Menti tests over the past number of weeks, will also have this privellege.
-    - 15 minutes later the final **4 exercises** will be released to the other students:
+    - After the menti test the final **4 exercises** will be released to the other students:
       - 3 Conceptual Questions
       - A Final PySpark exercise
     
@@ -280,7 +281,7 @@ def render_progress_table(current_user):
     - Turn all the cells green in your row to win!
     
     ### Gift Card:
-    The **first person to complete all challenges** (turn all cells green) will be awarded the £20 Amazon Gift Card! 
+    The **first person to complete all challenges** (turn all cells green) will be awarded the £20 Gift Card of their choice! 
     Track your progress in the table above, and check the **Leaderboard** tab to see who has the most green boxes in real time!
     """)
 
