@@ -36,10 +36,10 @@ CORRECT_ANSWERS = {
     14: "acdom",
     15: "14s3",
     16: "WINDOW",
-    17:"dX3k_QDnzHE",
-    18: "ssddtleps",
-    19: "YISTRKW",
-    20: "BHBSPGC",
+    17: "BHBSPGC",
+    18:"dX3k_QDnzHE",
+    19: "ssddtleps",
+    20: "YISTRKW",
     21: "sumsplit>sumacyclic",
 }
 
@@ -262,15 +262,17 @@ def render_progress_table(current_user):
     - And so on...
     
     ### Daily Exercises and Tests:
-    - The **first 9 exercises** will be **PySpark exercises + 1 Easter Egg Exercise**
+    - The **first 8 exercises** will be **PySpark exercises**
     - The **second set** of exercises are **8 SQL exercises** following the same format
+    - Then there is 1 conceptual question
+    - The a harder **Easter Egg Exercise** will be released
+    
     ##### With 4 questions remaining:
-    - The 4 questions will all be released at the same time at 3:30PM
-    - Before this there is a final **Menti Test**, where the winner will be awarded the answer to any one question (except the final exercise) of their choice, giving them an advantage over the other students.
-    - The top of the leaderboard, for the Menti tests over the past number of weeks, will also have this privellege.
-    - After the menti test the final **4 exercises** will be released to the other students:
-      - 3 Conceptual Questions
-      - A Final PySpark exercise
+    - There will be a final Menti test, where the winner will be awarded either the answer to any one question (except the final exercise and Exercise 17) of their choice, or a hint for any question of their choice (including Exercise 17 but excluding the final exercise), giving them an advantage over the other students.    - The top of the leaderboard, for the Menti tests over the past number of weeks, will also have this privellege. 
+    - Then 4 questions will be released at varying times:
+    - Question 18: the **HARDEST** exercise - please do this as early as possible
+    - 2 Conceptual Questions
+    - A Final PySpark exercise
     
     ### Progress Tracking:
     - **Select your name** from the sidebar to log in
