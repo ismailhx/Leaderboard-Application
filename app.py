@@ -37,9 +37,9 @@ CORRECT_ANSWERS = {
     15: "acdom",
     16: "14s3",
     17: "WINDOW",
-    18: "YISTRKW",
-    19: "BHBSPGC",
-    20: "ssddtleps",
+    18: "ssddtleps",
+    19: "YISTRKW",
+    20: "BHBSPGC",
     21: "sumsplit>sumacyclic",
 }
 
