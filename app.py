@@ -265,12 +265,11 @@ def render_progress_table(current_user):
     - The **first 8 exercises** will be **PySpark exercises**
     - The **second set** of exercises are **8 SQL exercises** following the same format
     - Then there is 1 conceptual question
-    - The a harder **Easter Egg Exercise** will be released
+    - The a harder **Easter Egg Exercise** will be released - Question 18: the **HARDEST** exercise - please do this as early as possible
     
-    ##### With 4 questions remaining:
-    - There will be a final Menti test, where the winner will be awarded either the answer to any one question (except the final exercise and Exercise 17) of their choice, or a hint for any question of their choice (including Exercise 17 but excluding the final exercise), giving them an advantage over the other students.    - The top of the leaderboard, for the Menti tests over the past number of weeks, will also have this privellege. 
-    - Then 4 questions will be released at varying times:
-    - Question 18: the **HARDEST** exercise - please do this as early as possible
+    ##### With 3 questions remaining:
+    - There will be a final Menti test, where the winner will be awarded either the answer to any one question (except the final exercise and Exercise 18) of their choice, or a hint for any question of their choice (including Exercise 18 but excluding the final exercise), giving them an advantage over the other students.    - The top of the leaderboard, for the Menti tests over the past number of weeks, will also have this privellege. 
+    - Then 3 questions will be released at varying times:
     - 2 Conceptual Questions
     - A Final PySpark exercise
     
